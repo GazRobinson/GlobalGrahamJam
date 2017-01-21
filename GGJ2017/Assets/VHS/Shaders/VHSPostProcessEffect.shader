@@ -80,10 +80,13 @@ float onOff(float a, float b, float c)
 */
 				float2 look = i.uv;
 				float window = 1./(1.+20.*(look.y-fmod(_Time.y/4.,1.))*(look.y-fmod(_Time.y/4.,1.)));
-				look.x = look.x + sin(look.y*10. + _Time.y)/50.*onOff(4.,4.,.3)*(1.+cos(_Time.y*80.))*window;
+				//Wavelength in Sin, Amp in Cos
+				look.x = look.x + sin(look.y*10. + _Time.y)/50.*onOff(0.,0.5,0.9)*(0.5+cos(_Time.y*80.))*window;
+				
 				float vShift = 0.4*onOff(2.,3.,.9)*(sin(_Time.y)*sin(_Time.y*20.) + 
 													(0.5 + 0.1*sin(_Time.y*200.)*cos(_Time.y)));
-				look.y = fmod(look.y + vShift, 1.);
+				//look.y = fmod(look.y + vShift, 1.);
+				
 				float4 video = tex2D(_MainTex,look);
 
 

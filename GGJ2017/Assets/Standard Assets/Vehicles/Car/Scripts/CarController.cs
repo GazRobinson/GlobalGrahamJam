@@ -276,25 +276,7 @@ namespace UnityStandardAssets.Vehicles.Car
                 WheelHit wheelHit;
                 m_WheelColliders[i].GetGroundHit(out wheelHit);
 
-                // is the tire slipping above the given threshhold
-                if (Mathf.Abs(wheelHit.forwardSlip) >= m_SlipLimit || Mathf.Abs(wheelHit.sidewaysSlip) >= m_SlipLimit)
-                {
-                    // avoiding all four tires screeching at the same time
-                    // if they do it can lead to some strange audio artefacts
-                    if (!AnySkidSoundPlaying())
-                    {
-                        m_WheelEffects[i].PlayAudio();
-                    }
-                    continue;
-                }
-
-                // if it wasnt slipping stop all the audio
-                if (m_WheelEffects[i].PlayingAudio)
-                {
-                    m_WheelEffects[i].StopAudio();
-                }
-                // end the trail generation
-                m_WheelEffects[i].EndSkidTrail();
+            
             }
         }
 
@@ -347,19 +329,6 @@ namespace UnityStandardAssets.Vehicles.Car
                     m_CurrentTorque = m_FullTorqueOverAllWheels;
                 }
             }
-        }
-
-
-        private bool AnySkidSoundPlaying()
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                if (m_WheelEffects[i].PlayingAudio)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 }
