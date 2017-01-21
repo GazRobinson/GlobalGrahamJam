@@ -18,17 +18,20 @@ public RectTransform cursor;
 
     // Use this for initialization
     void Start () {
-		
-	}
+        Cursor.visible = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(Camera.main.ScreenToViewportPoint(Input.mousePosition));
         Vector3 vpPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 		cursor.anchoredPosition = 	new Vector2(vpPos.x * GetScreenSize().x, vpPos.y * GetScreenSize().y) - (GetScreenSize() * 0.5f);
     }
 	public Vector2 GetScreenPos(Vector2 pos){
 		Vector3 vpPos = Camera.main.ScreenToViewportPoint(pos);
 		return	new Vector2(vpPos.x * GetScreenSize().x, vpPos.y * GetScreenSize().y) - (GetScreenSize() * 0.5f);
+	}
+
+	private void GetInput(){
+	//	if(Input.GetKeyDown)
 	}
 }
