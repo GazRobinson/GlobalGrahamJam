@@ -107,7 +107,20 @@ public class ScreenController : MonoBehaviour {
             GameOver.Instance.GAMEOVER();
         }
     }
-    
+    public void InterruptWindow(){
+
+        popup.WindowClosed = Interrupted;
+        popup.Close();
+        
+
+    }
+    void Interrupted(int pie){
+        textWindow.Close();
+        textWindow.ClosedDelegate += OnSelection;
+        popup.WindowClosed = OnPopupClosed;
+        GetNext(56);
+
+    }
     void PopupDone(){
         Debug.Log("Done");
         GetTextBox(current.Question);
