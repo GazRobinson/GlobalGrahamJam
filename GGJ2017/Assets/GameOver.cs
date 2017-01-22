@@ -26,6 +26,7 @@ float a = 0.0f;
         StartCoroutine(FadeIn());
     }IEnumerator FadeOut(){
         a = 1.0f;
+        DynamicGI.UpdateEnvironment();
         yield return new WaitForSeconds(1.0f);
         while (a > 0.0f)
         {
