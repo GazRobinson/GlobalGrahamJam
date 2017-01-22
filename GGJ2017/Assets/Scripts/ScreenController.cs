@@ -35,8 +35,7 @@ public class ScreenController : MonoBehaviour {
         {
             textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetPopup(current.Answers, PopupDone); };
         } else{
-            OnSelection = PopupDone;
-            textWindow.OnFinishedText = delegate { OnPopupClosed(0); };
+            textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetPopup(new string[]{"OK"}, PopupDone); };
         }
         textWindow.Open();
     }
