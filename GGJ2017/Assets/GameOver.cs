@@ -26,7 +26,7 @@ float a = 0.0f;
         StartCoroutine(FadeIn());
     }IEnumerator FadeOut(){
         a = 1.0f;
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         while (a > 0.0f)
         {
             a = Mathf.Max(0.0f, a - Time.deltaTime);
