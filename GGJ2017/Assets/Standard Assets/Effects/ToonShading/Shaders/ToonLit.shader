@@ -3,6 +3,8 @@ Shader "Toon/Lit" {
 		_Color ("Main Color", Color) = (0.5,0.5,0.5,1)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {} 
+		_NexTex ("Base (RGB)", 2D) = "white" {}
+		_Blend ("NIGHT", Range (0.0, 1.0)) = 0.0
 	}
 
 	SubShader {
@@ -34,14 +36,17 @@ inline half4 LightingToonRamp (SurfaceOutput s, half3 lightDir, half atten)
 
 
 sampler2D _MainTex;
+sampler2D _NexTex;
 float4 _Color;
+float _Blend;
+
 
 struct Input {
 	float2 uv_MainTex : TEXCOORD0;
 };
 
 void surf (Input IN, inout SurfaceOutput o) {
-	half4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
+	half4 c = lerp(tex2D(_MainTex, IN.uv_MainTex), tex2D(_NexTex, IN.uv_MainTex), _Blend) * _Color;
 	o.Albedo = c.rgb;
 	o.Alpha = c.a;
 }

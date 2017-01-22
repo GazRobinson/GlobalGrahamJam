@@ -51,7 +51,7 @@ public class ScreenController : MonoBehaviour {
                 // textWindow.Close();
                 // textWindow.ClosedDelegate += OnSelection;
                 current = questions[current.Referral[0]-1]; 
-        GetTextBox(current.Question);};
+        GetTextBox(current.Question);   };
                 
            // OnSelection();
            // textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetInput(); };
@@ -109,6 +109,9 @@ public class ScreenController : MonoBehaviour {
 	void Update () {
         Vector3 vpPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 		cursor.anchoredPosition = 	new Vector2(vpPos.x * GetScreenSize().x, vpPos.y * GetScreenSize().y) - (GetScreenSize() * 0.5f);
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            GameOver.Instance.GAMEOVER();
+        }
     }
 	public Vector2 GetScreenPos(Vector2 pos){
 		Vector3 vpPos = Camera.main.ScreenToViewportPoint(pos);
