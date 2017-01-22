@@ -4,7 +4,7 @@ Shader "Toon/Lit" {
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {} 
 		_NexTex ("Base (RGB)", 2D) = "white" {}
-		_Blend ("NIGHT", Range (0.0, 1.0)) = 0.0
+		_Blend ("Blend", Range (0.0, 1.0)) = 0.0
 	}
 
 	SubShader {
