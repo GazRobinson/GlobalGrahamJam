@@ -1,0 +1,65 @@
+,Dialogue,Answer#1,Answer#2,Answer#3,IDReferal,Function
+1,The evening sky is beautiful. ,,,,2,FALSE
+2,You know I don't think i've ever asked your name:,<playerinput>,,,3,TRUE
+3,Nice name <playerinput>,,,,4,FALSE
+4,What will you be doing tonight?,I don't know,"I drive, always",,"5,6",FALSE
+5,No one ever truly does. It's what makes life exciting,,,,7,FALSE
+6,Your commitment is truly admirable. I long for the day that I too can find a passion to dedicate my heart and soul to.,,,,8,FALSE
+7,"But eternally is a long time for uncertainty, why not pick something:",Learning to love,Chasing my dreams,Forgetting my troubles,"9,10,11",FALSE
+8,"That said, driving can get quite monotonous. What would you wish to do instead of driving?",Learning to love,Chasing my dreams,Forgetting my troubles,"9,10,11",FALSE
+9,"The world is full of beauty, study hard and i'm sure you'll learn. I find flash cards are a great way to remember. Let's make some.",,,,12,FALSE
+10,"Of course, the aspirations of the adventurer. Be the lion and hunt down your dream gazelle of: ",Aesthetic Perfection,To Explore the Ocean,Becoming a Police Office,"14,15,16",FALSE
+11,"Understandable, for no person, be it Driver of Dolphin should live in constant fear of their troubles",,,,20,FALSE
+12,The best way to show affection to a loved one? Your answer:,<playerinput>,,,13,TRUE
+13,I see. I've found that one must truly love themselves before they can truly love another.,,,,21,FALSE
+14,"But this has already been achieved, this is aesthetically perfect. Your answer is invalid, select another:",Aesthetic Imperfection,To Explore the Ocean,Becoming a Police Office,"17,15,16",FALSE
+15,"I can sympathise. For the freedom the ocean provides, it's truly breathtaking. Take this as a a memento to mark the start of your great adventure",,,,21,TRUE
+16,But... you already are a police Officer,,,,21,TRUE
+17,"Ah, a revolutionary if not controversial desire. Why do you wish to create such imperfection:",To be Different,To be Difficult,,"18,19",FALSE
+18,"In a world where we all use the same Sepia filter for our pictures, the desire to be different is an appealing one",,,,21,FALSE
+19,"Life is already difficult, don't add unnecessary difficulty to others.  ",,,,21,FALSE
+20,Know that there is comfort at the bottom of the ocean,,,,21,FALSE
+21,"You've been driving for a long time, do you want to stop?",Yes,No,,"22,23",TRUE
+22,<Inhales the euphoric atmosphere>,,,,24,FALSE
+23,"It's your prerogative I guess, but a long time at the wheel can prove dangerous. Remember to take intermitent breaks during long journeys",,,,28,FALSE
+24,I enjoy sitting here contemplating about things,,,,25,FALSE
+25,You know I've been thinkning; I reckon all actions and decisions are simply machinations of a predetermined universe.,,,,26,FALSE
+26,"The illusion of Free Will is simply a comfort. Would you agree?",Yes,No,,"27,27",TRUE
+27,I see. I'm glad you came to this conclusion by yourself. Shall we continue on?,,,,28,TRUE
+28,I'm sure there is much going on in your head. Do you want to delete these feelings?,Yes,No,,"29,34",TRUE
+29,Do you feel good about what you've just done?,Yes,No,,"30,30",FALSE
+30,Error: Missing file C:/User/Desktop/feelings.txt create a new file?,Yes,No,,"32,33",TRUE
+31,I'm glad you feel that way,,,,35,FALSE
+32,"Error: feelings[string] failed to parse, generating automatic feelings  ",Morose,Ennui,Mirthful,"34,34,34",FALSE
+33,Interesting feelings you have there buddy.,,,,35,FALSE
+34,Being Alive is a neat!,,,,36,FALSE
+35,あなたはあなたが喫煙しているどのような風味ですか？,スイカ,グレープ,オーク,"37,37,37",FALSE
+36,Good flavour choice. I personally vape Kiwi,,,,38,FALSE
+37,Mother said I shouldn't but i've seen the packet of lambert and butler she keeps in the bedroom drawer,,,,39,FALSE
+38,Why do I do this to myself? My mind is an river and he constant stream of conciousness is exhausting.,,,,40,FALSE
+39,"Like... the reasonable Dolphin adapts themselves to the world, and the unreasonable Dolphin adapts the world to them.",,,,41,FALSE
+40,Therefore we should all seek to be the unreasonable Dolphin don't you think?,Yes ,No,,"42,43",FALSE
+41,I'm glad you agree,,,,44,FALSE
+42,"Well of course you wouldn't understand, you aren't a Dolphin.",,,,44,FALSE
+43,"Ok well how about this; If being born is the greatest act of creation, then what are supposed to do after that?",,,,45,FALSE
+44,Isn't everything that comes after a dissapointment?,Yes,No,,"46,47",TRUE
+45,A sad state of affairs indeed,,,,48,FALSE
+46,"Fine I'm changing the subject, there's a bad atmosphere in here",,,,52,FALSE
+47,"I'm feeling a connection here, wouldn't you agree?",Yes,No,,"49,50",FALSE
+48,That warms my blubber he hear you say that,,,,51,FALSE
+49,"Well, whatever. Nevermind",,,,51,FALSE
+50,Have you ever been lost? We could get lost together:,Let's do it!,I'd rather not,,"53,54",FALSE
+51,Have you ever been lost? We could get lost together:,Let's do it!,I'd rather not,,"53,55",FALSE
+52,"Neato! If we should get separated, just whistle. I'll come running. I promise",,,,58,FALSE
+53,Oh... ok.,,,,58,FALSE
+54,"You know what nevermind, take a left here, i'm getting out",,,,56,TRUE
+55,"#player turns left into the water, but his the waves: Well this is awkward.",,,,-1,TRUE
+56,"#Player continues on the route: Oh that's ok, i didn't want to live there anyway",,,,58,TRUE
+57,Do you want to be free from this?,Yes,No,,"60,59",FALSE
+58,That makes me happy. I enjoy our drives,,,,61,FALSE
+59,#ends the game - fades to black: You just experienced Something for <time>,,,,-1,TRUE
+60,I have a question,,,,62,TRUE
+61,Do you actually exists?,Yes,No,,"63,62",FALSE
+62,If you don't exist then who are you?,"Caesar, I'm you",I cannot answer that,,"64,65",FALSE
+63,How can you be so sure?,Trust Me,I'm having second thoughts,,"66,62",FALSE
+64,"But if you're me, and i'm talking to myself, then who is driving the car?",,,,-1,TRUE
