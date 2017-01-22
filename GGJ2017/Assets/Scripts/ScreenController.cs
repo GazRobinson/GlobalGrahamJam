@@ -11,7 +11,8 @@ public class ScreenController : MonoBehaviour {
     public ButtonWindow popup;
     public TextWindow textWindow;
     public InputWindow InputWindow;
-public string Name = "Dr. Iver";
+    public RecycleBin bin;
+    public string Name = "Dr. Iver";
     public RectTransform cursor;
     private RectTransform rectTransform;
     private System.Action OnSelection;
@@ -42,6 +43,18 @@ public string Name = "Dr. Iver";
                 InputWindow.OnStringSubmission = DoName;
             }
                 textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetInput(); };
+        textWindow.Open();
+        } else if(current.Answers.Length>0 && current.Answers[0] == "<FILE>"){
+
+            bin.OnFileTrash = delegate {
+                Debug.Log("Feelings deleted");
+                // textWindow.Close();
+                // textWindow.ClosedDelegate += OnSelection;
+                current = questions[current.Referral[0]-1]; 
+        GetTextBox(current.Question);};
+                
+           // OnSelection();
+           // textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetInput(); };
         } else
         {
             if (current.Answers.Length > 0)
@@ -52,8 +65,8 @@ public string Name = "Dr. Iver";
             {
                 textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetPopup(new string[] { "OK" }, PopupDone); };
             }
-        }
         textWindow.Open();
+        }
     }
     public void GetInput(){
         InputWindow.Open();
