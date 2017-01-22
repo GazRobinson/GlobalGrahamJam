@@ -10,7 +10,8 @@ public class TextTyper : MonoBehaviour {
         running = true;
         targetText = text + "\n\n";
     }
-public float speed = 20.0f;
+    public System.Action TextFinished;
+    public float speed = 20.0f;
     private string targetText = "";
     private Text textRender;
     private int textCursor = 0;
@@ -26,6 +27,12 @@ public float speed = 20.0f;
 		if(running){
             textTime += Time.deltaTime*speed;
 			textRender.text = targetText.Substring(0, Mathf.Min(Mathf.CeilToInt(textTime), targetText.Length)) + ((Time.time*2)%2 < 1 ? "":"_");
+            if(textTime > targetText.Length + 5){
+                running = false;
+                if(TextFinished!=null){
+                    TextFinished();
+                }
+            }
         }
 	}
 }
