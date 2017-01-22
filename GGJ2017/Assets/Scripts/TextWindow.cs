@@ -17,6 +17,7 @@ public class TextWindow : UIWindow {
 textBody.SetText(testText);
     }
     protected override void OnFinishedClose(){
+        textBody.Clear();
         if(ClosedDelegate!=null){
             ClosedDelegate();
         }

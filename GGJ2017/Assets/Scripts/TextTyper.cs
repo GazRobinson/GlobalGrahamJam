@@ -21,7 +21,11 @@ public class TextTyper : MonoBehaviour {
     void Start () {
         textRender = GetComponent<Text>();
     }
-	
+	public void Clear(){
+        targetText = "";
+        textRender.text = "";
+        running = false;
+    }
 	// Update is called once per frame
 	void Update () {
 		if(running){
