@@ -12,6 +12,7 @@ public class ScreenController : MonoBehaviour {
     public TextWindow textWindow;
     public InputWindow InputWindow;
     public RecycleBin bin;
+    public DragHook file;
     public string Name = "Dr. Iver";
     public RectTransform cursor;
     private RectTransform rectTransform;
@@ -22,6 +23,8 @@ public class ScreenController : MonoBehaviour {
         rectTransform = GetComponent<RectTransform>();
         popup.WindowClosed += OnPopupClosed;
         InputWindow.OnStringSubmission += OnStringSubmission;
+        bin.gameObject.SetActive(false);
+        file.gameObject.SetActive(false);
     }
     void OnStringSubmission(string submission){
         Debug.Log("Controller got " + submission);
@@ -46,10 +49,13 @@ public class ScreenController : MonoBehaviour {
         textWindow.Open();
         } else if(current.Answers.Length>0 && current.Answers[0] == "<FILE>"){
 
+        bin.gameObject.SetActive(true);
+        file.gameObject.SetActive(true);
             bin.OnFileTrash = delegate {
                 Debug.Log("Feelings deleted");
                 // textWindow.Close();
                 // textWindow.ClosedDelegate += OnSelection;
+                bin.gameObject.SetActive(false);
                 current = questions[current.Referral[0]-1]; 
         GetTextBox(current.Question);   };
                 
@@ -57,13 +63,19 @@ public class ScreenController : MonoBehaviour {
            // textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetInput(); };
         } else
         {
+            Debug.Log(current.ID);
             if (current.Answers.Length > 0)
             {
                 textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetPopup(current.Answers, PopupDone); };
+                
             }
             else
             {
                 textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetPopup(new string[] { "OK" }, PopupDone); };
+            }if(current.ID == 16){
+                    textWindow.OnFinishedText += SirenRotationScript.Instance.Appear;
+                } else if(current.ID == 38){
+                NIGHTMODE.instance.ACTIVATENIGHTMODE();
             }
         textWindow.Open();
         }
