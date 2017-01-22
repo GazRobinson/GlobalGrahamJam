@@ -16,7 +16,8 @@ public class UIWindow : MonoBehaviour {
     protected float tweenTime = 0.3f;
     private WindowDragger dragger;
     public virtual void Open(){
-		if(state == WindowState.Closed || state == WindowState.Closing){
+        gameObject.SetActive(true);
+        if(state == WindowState.Closed || state == WindowState.Closing){
             iTween.Stop(gameObject);
             rectTransform.sizeDelta = new Vector2(0.0f, 90.0f);
             state = WindowState.Opening;
@@ -38,8 +39,9 @@ public class UIWindow : MonoBehaviour {
     }
 	protected void FinishedClose(){
 		state = WindowState.Closed;
+        gameObject.SetActive(false);
 		OnFinishedClose();
-	}
+    }
 	protected virtual void OnFinishedClose(){
 
 	}

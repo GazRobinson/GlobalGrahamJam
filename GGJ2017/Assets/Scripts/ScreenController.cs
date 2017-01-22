@@ -142,6 +142,7 @@ public class ScreenController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Cursor.visible = false;
         Vector3 vpPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 		cursor.anchoredPosition = 	new Vector2(vpPos.x * GetScreenSize().x, vpPos.y * GetScreenSize().y) - (GetScreenSize() * 0.5f);
         if(Input.GetKeyDown(KeyCode.Escape)){

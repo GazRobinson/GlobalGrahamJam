@@ -13,10 +13,14 @@ Camera cam2;
         {
             cam2 = transform.GetChild(0).GetComponent<Camera>();
         }
-        float current = Screen.width / Screen.height;
-Rect rect = cam.rect;
-rect.width = current / res;
-
+       // Debug.Log(Screen. + ", " +Screen.currentResolution.height);
+		float current = (float)Screen.width/ (float)Screen.height;
+		
+        Debug.Log("PIdsdsE " + Screen.height +", " + Screen.width);
+        Debug.Log("Current: " + current + ", Res: " + res);
+        Rect rect = cam.rect;
+		rect.width = res / current;
+Debug.Log(rect.width);
         rect.x = (1f - rect.width) * 0.5f;
         cam.rect = rect;
         if (cam2 != null)

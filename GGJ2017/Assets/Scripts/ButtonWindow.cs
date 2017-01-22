@@ -18,6 +18,7 @@ public class ButtonWindow : UIWindow {
 	}
 
     public override void Open(){
+        gameObject.SetActive(true);
         rectTransform.sizeDelta = targetSize;
         FinishedOpen();
     }

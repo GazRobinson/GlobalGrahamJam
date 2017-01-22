@@ -31,6 +31,7 @@ public class TextTyper : MonoBehaviour {
 		if(running){
             textTime += Time.deltaTime*speed;
 			textRender.text = targetText.Substring(0, Mathf.Min(Mathf.CeilToInt(textTime), targetText.Length)) + ((Time.time*2)%2 < 1 ? "":"_");
+            Caeser.instance.Talk(30f);
             if(textTime > targetText.Length + 5){
                 running = false;
                 if(TextFinished!=null){
