@@ -15,6 +15,8 @@ public static NIGHTMODE instance = null;
 	public Material wheel;
     public Light lightt;
     public GameObject lightsss;
+    public AudioSource a;
+	public AudioSource b;
     // Use this for initialization
     void Start () {
         instance = this;
@@ -35,6 +37,8 @@ StartCoroutine(ToNight());
 			RenderSettings.skybox.SetColor("_SkyTint", Color.Lerp(pink, night, t));
         car.SetFloat("_Blend", t);
         wheel.SetFloat("_Blend", t);
+            a.volume = 1-t;
+            b.volume = t;
             lightt.intensity = Mathf.Lerp(1f, 0.4f, t);
 			RenderSettings.ambientIntensity = Mathf.Lerp(1f, 0.4f, t);
             yield return null;
