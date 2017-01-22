@@ -10,7 +10,8 @@ public class ScreenController : MonoBehaviour {
 
     public ButtonWindow popup;
     public TextWindow textWindow;
-
+    public InputWindow InputWindow;
+public string Name = "Dr. Iver";
     public RectTransform cursor;
     private RectTransform rectTransform;
     private System.Action OnSelection;
@@ -19,6 +20,10 @@ public class ScreenController : MonoBehaviour {
         Instance = this;
         rectTransform = GetComponent<RectTransform>();
         popup.WindowClosed += OnPopupClosed;
+        InputWindow.OnStringSubmission += OnStringSubmission;
+    }
+    void OnStringSubmission(string submission){
+        Debug.Log("Controller got " + submission);
     }
     void StartStory(){
         current = questions[0];
@@ -31,18 +36,42 @@ public class ScreenController : MonoBehaviour {
         textWindow.testText = null;
         textWindow.testText = text;
         textWindow.OnFinishedText = null;
-        if (current.Answers.Length > 0)
+        if(current.Answers.Length>0 && current.Answers[0] == "<INPUT>"){
+            if (current.Answers[1] == "<name>")
+            {
+                InputWindow.OnStringSubmission = DoName;
+            }
+                textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetInput(); };
+        } else
         {
-            textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetPopup(current.Answers, PopupDone); };
-        } else{
-            textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetPopup(new string[]{"OK"}, PopupDone); };
+            if (current.Answers.Length > 0)
+            {
+                textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetPopup(current.Answers, PopupDone); };
+            }
+            else
+            {
+                textWindow.OnFinishedText = delegate { Debug.Log("Finished Text"); GetPopup(new string[] { "OK" }, PopupDone); };
+            }
         }
         textWindow.Open();
+    }
+    public void GetInput(){
+        InputWindow.Open();
     }
     public void GetPopup(string[] options, System.Action CompletionDelegate){
         Debug.Log("GET PPUP");
         OnSelection = CompletionDelegate;
         popup.Initialise(options);
+    }
+    private void DoName(string newName){
+        if (newName.Length > 0)
+        {
+            Debug.Log("Name is " + newName);
+            Name = newName;
+        }
+        textWindow.Close();
+        textWindow.ClosedDelegate += OnSelection;
+        current = questions[current.Referral[0]-1];
     }
     
     void PopupDone(){
@@ -73,7 +102,4 @@ public class ScreenController : MonoBehaviour {
 		return	new Vector2(vpPos.x * GetScreenSize().x, vpPos.y * GetScreenSize().y) - (GetScreenSize() * 0.5f);
 	}
 
-	private void GetInput(){
-	//	if(Input.GetKeyDown)
-	}
 }

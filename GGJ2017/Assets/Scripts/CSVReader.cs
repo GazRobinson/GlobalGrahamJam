@@ -196,7 +196,7 @@ public List<QuestionDataStrings> qst = new List<QuestionDataStrings>();
                 loopCount++;
                 if ( currentLine.Contains( "\"" ) ) {
 
-                        Debug.Log(currentLine );
+//                        Debug.Log(currentLine );
                     //The line contains either a comma or a new line character
                     int quoteIndex = currentLine.IndexOf("\"");
 

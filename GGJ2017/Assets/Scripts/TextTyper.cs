@@ -8,7 +8,7 @@ public class TextTyper : MonoBehaviour {
 	public void SetText(string text){
         textTime = 0.0f;
         running = true;
-        targetText = text + "\n\n";
+        targetText = text.Replace("@", ScreenController.Instance.Name)  + "\n\n";
     }
     public System.Action TextFinished;
     public float speed = 20.0f;
