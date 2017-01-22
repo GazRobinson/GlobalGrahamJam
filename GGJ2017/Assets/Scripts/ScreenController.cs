@@ -84,7 +84,16 @@ public class ScreenController : MonoBehaviour {
         }
         textWindow.Close();
         textWindow.ClosedDelegate += OnSelection;
-        current = questions[current.Referral[0]-1];
+        GetNext(current.Referral[0]);
+        //current = questions[current.Referral[0]-1];
+    }
+    void GetNext(int referral){
+        if (referral > -1)
+        {
+            current = questions[referral - 1];
+        } else{
+            GameOver.Instance.GAMEOVER();
+        }
     }
     
     void PopupDone(){
@@ -95,7 +104,8 @@ public class ScreenController : MonoBehaviour {
     void OnPopupClosed(int selection){
         textWindow.Close();
         textWindow.ClosedDelegate += OnSelection;
-        current = questions[current.Referral[selection]-1];
+        GetNext(current.Referral[selection]);
+       // current = questions[current.Referral[selection]-1];
     }
 
     // Use this for initialization
