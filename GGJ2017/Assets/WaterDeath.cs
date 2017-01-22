@@ -11,7 +11,8 @@ void Update(){
     }
     void OnTriggerEnter(Collider col){
         if(col.gameObject.tag == "Player"){
-            GameOver.Instance.GAMEOVER();
+            // GameOver.Instance.GAMEOVER();
+            ScreenController.Instance.InterruptWindow();
         }
 	}
 }
